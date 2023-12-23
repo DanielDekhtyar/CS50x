@@ -1,0 +1,23 @@
+sort1 uses: Bubble Sort
+
+How do you know?: It took long time to sort the random but not long time to sort the already sorted
+
+sort2 uses: Merge Sort
+
+How do you know?: I took the least time to sort it
+
+sort3 uses: Selection Sort
+
+How do you know?: It took long time to sort it
+
+sort1 random real    0m0.341s
+sort1 reversed real    0m0.275s
+sort1 sorted real    0m0.087s
+
+sort2 random real    0m0.067s
+sort2 reversed real    0m0.082s
+sort2 sorted real    0m0.086s
+
+sort3 random real    0m0.186s
+sort3 reversed real    0m0.141s
+sort3 sorted real    0m0.161s
