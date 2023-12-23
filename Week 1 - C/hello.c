@@ -1,6 +1,6 @@
 // Learning C with CS50x
 // Hello
-// https://cs50.harvard.edu/x/2023/psets/1/hello/
+// https://cs50.harvard.edu/x/2024/psets/1/hello/
 
 #include <stdio.h>
 

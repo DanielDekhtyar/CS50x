@@ -1,6 +1,6 @@
 // Learning C with CS50x
 // Credit
-// https://cs50.harvard.edu/x/2023/psets/1/credit/
+// https://cs50.harvard.edu/x/2024/psets/1/credit/
 
 
 // This program checks if the credit card is valid using Luhn’s CheckSum Algorithm and says to which credit card network the card belongs

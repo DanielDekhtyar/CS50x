@@ -1,6 +1,6 @@
 // Learning C with CS50x
 // Mario
-// https://cs50.harvard.edu/x/2023/psets/1/mario/more/
+// https://cs50.harvard.edu/x/2024/psets/1/mario/more/
 
 #include <stdio.h>
 
