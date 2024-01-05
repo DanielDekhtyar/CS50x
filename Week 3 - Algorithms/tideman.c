@@ -1,3 +1,7 @@
+// Learning C with CS50x
+// Tideman
+// https://cs50.harvard.edu/x/2024/psets/3/tideman/
+
 #include "cs50.h"
 #include <stdio.h>
 #include <string.h>
