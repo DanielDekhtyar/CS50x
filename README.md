@@ -1,6 +1,7 @@
 # CS50x
 ### All my code assignments from CS50’s Introduction to Computer Science
-![CS50 Duck Debugger](https://cs50.gallerycdn.vsassets.io/extensions/cs50/ddb50/1.1.2/1691002683906/Microsoft.VisualStudio.Services.Icons.Default)
+
+![CS50 Duck Debugger.png](<CS50 Duck Debugger.png>)
 
 > Email : denik2707@gmail.com  
 > LinkedIn : https://www.linkedin.com/in/daniel-dekhtyar/
