@@ -1,7 +1,7 @@
 # CS50x
 ### All my code assignments from CS50’s Introduction to Computer Science
 
-![CS50 Duck Debugger.png](<CS50 Duck Debugger.png>)
+![CS50 Duck Debugger](<CS50 Duck Debugger.png>)
 
 > Email : denik2707@gmail.com  
 > LinkedIn : https://www.linkedin.com/in/daniel-dekhtyar/
