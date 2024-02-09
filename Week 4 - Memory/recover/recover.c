@@ -1,3 +1,7 @@
+// Learning C with CS50x
+// Recover
+// https://cs50.harvard.edu/x/2024/psets/4/recover/
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
