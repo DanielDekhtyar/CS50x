@@ -6,8 +6,8 @@
 > Email : denik2707@gmail.com  
 > LinkedIn : https://www.linkedin.com/in/daniel-dekhtyar/
 ---
-### You can find the full course [here](https://cs50.harvard.edu/x/2024/)
+### You can find the full course [here](https://cs50.harvard.edu/x/2024/).
 
-### The full YouTube playlist of the lectures can be found [here](UPDATE !!!)
+### The full YouTube playlist of the lectures can be found [here](https://www.youtube.com/watch?v=3LPJfIKxwWc&list=PLhQjrBD2T381WAHyx1pq-sBfykqMBI7V4&pp=iAQB).
 
 #### *The certificate of completion from Harvard is in the GitHub repository and on LinkedIn*
