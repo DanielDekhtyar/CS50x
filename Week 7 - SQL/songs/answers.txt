@@ -1,0 +1,7 @@
+The avarege of this users energy, valence and decability sugests that the user is Green.
+Green:
+Calm, analytical, and introspective are the traits that describe a green aura.
+These listeners gravitate toward complex music to tame their fast-moving minds.
+
+I thing the Aura is not be very representative of the listener becouse the calculations does not include the loudness, speechiness and tempo of the song.
+Those parametars can say a lot about the style of the music this user listes to.
