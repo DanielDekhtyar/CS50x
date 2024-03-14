@@ -1,0 +1,18 @@
+/*
+CSS for styling the input box
+*/
+
+#input-box {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* CSS for styling the input box on focus */
+#input-box:focus {
+outline: none;
+border-color: #007bff;
+box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}

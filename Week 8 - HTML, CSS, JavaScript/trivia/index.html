@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="css/buttons.css" rel="stylesheet">
+        <link href="css/input_box.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <link rel="icon" href="images/trivia.png"
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>What was the name of the Australian 1932 war?</h3>
+                <div class="button-container">
+                    <button class="button" id="WW1">World War I</button>
+                    <button class="button" id="emu-war">The Great Emu War</button>
+                    <button class="button" id="independence">The War of Independence</button>
+                    <button class="button" id="aus-vs-nz">Australia vs New Zealand</button>
+                    <button class="button" id="WW2">World War II</button>
+                </div>
+                <h3 class="answerText" id="multiple-choice-answer-correct">Yes! In 1932 the Australians went to war against the emus. <br> And guess what?! <br> The Australians LOST! <br> TWICE!!! 😨</h3>
+                <h3 class="answerText" id="multiple-choice-answer-wrong">No... Try again!</h3>
+                <img src="images/emu war.png" id="emu-photo" alt="Emu War" class="answerPhoto">
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What animal Walt Disney was afraid of?</h3>
+                <form>
+                    <div style="text-align: center">
+                        <input type="text" placeholder="Enter text here" class="input-box" id="input-box" autocomplete="off">
+                        <button type="submit" class="button" id="check-button" style="padding: 10px 20px;">Check Answer</button>
+                    </div>
+                </form>
+                <h3 class="answerText" id="free-response-answer-correct">Yes! Walt Disney was indeed afraid of mice.<br> However, he did not let that fear stop him from creating the most famous and lovable cartoon character of all time.</h3>
+                <h3 class="answerText" id="free-response-answer-wrong">No... Try again!</h3>
+                <img src = "images/walt disney and mickey mouse.png" alt = "Walt Disney and Mickey Mouse statue" id = "disney" class="answerPhoto">
+            </div>
+        </div>
+
+        <script src="javascript/freeTextScript.js"></script>>
+    </body>
+</html>

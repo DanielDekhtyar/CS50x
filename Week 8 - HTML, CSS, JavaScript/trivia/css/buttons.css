@@ -1,0 +1,24 @@
+/*
+CSS for styling the buttons
+*/
+
+.button-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center align buttons horizontally */
+}
+
+.button {
+padding: 10px 40px;
+margin: 0 5px;
+background-color: #d5ecff;
+color: black; /* Text color */
+border: none;
+border-radius: 5px; /* Add rounded corners */
+cursor: pointer; /* Change cursor on hover */
+transition: border-radius 0.3s, background-color 0.5s; /* Smooth transition on hover */
+}
+
+.button:hover {
+background-color: #76b8ff; /* Change background color on hover */
+border-radius: 10px;
+}
