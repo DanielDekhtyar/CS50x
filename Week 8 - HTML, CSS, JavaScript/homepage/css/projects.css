@@ -1,0 +1,84 @@
+body {
+    background-color: #9BFF5E;
+}
+
+p {
+    text-align: center;
+    font-family:'Inria Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 3vh;
+}
+
+.container {
+    margin: auto;
+    text-align: center;
+}
+
+.project-pic:hover {
+    box-shadow: 8px 8px 20px rgb(180, 180, 180);
+    cursor: pointer;
+}
+
+#heading {
+    font-size: 12vh;
+    padding-top: 5vh;
+    text-decoration: dashed underline 3.5px #000000;
+    text-underline-offset: 1.4vh;
+    font-weight: 700;
+}
+
+#below-heading {
+    text-align: center;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-top: 2vh;
+    font-size: 5vh;
+}
+
+#hangman-heading {
+    padding-top: 10vh;
+    font-size: 6vh;
+    font-family:'Inria Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#hangman-description {
+    padding-top: 3vh;
+    width: 57vw;
+}
+
+#hangman-pic {
+    margin-top: 3vh;
+    width: 40vw;
+}
+
+#enigma-heading {
+    padding-top: 20vh;
+    font-size: 6vh;
+    font-family:'Inria Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+#enigma-description {
+    padding-top: 3vh;
+    width: 65vw;
+}
+
+#enigma-pic {
+    margin-top: 3vh;
+    width: 40vw;
+}
+
+#more-to-come {
+    padding-top: 30vh;
+    padding-bottom: 60vh;
+    font-size: 8vh;
+    font-style: italic;
+}
+
+#back-button{
+    width: 2.5vw;
+    height: 2.5vw;
+    position: fixed;
+    top: 1vw;
+    left: 1vw;
+    cursor: pointer;
+}
