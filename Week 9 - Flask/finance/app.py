@@ -4,8 +4,9 @@ from cs50 import SQL
 from flask import Flask, flash, redirect, render_template, request, session
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
-from helpers import apology, login_required, lookup, usd
+from helpers import apology, login_required, lookup, usd, get_stock_name, is_valid_stock
 
 # Configure application
 app = Flask(__name__)
@@ -35,14 +36,49 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return apology("TODO")
+    return render_template("index.html")
 
 
 @app.route("/buy", methods=["GET", "POST"])
 @login_required
 def buy():
-    """Buy shares of stock"""
-    return apology("TODO")
+    if request.method == "POST":
+        # Get the symbol of the stock ex. AAPL
+        symbol = request.form.get("symbol").upper()
+        
+        if not is_valid_stock(symbol):
+            return apology("Invalid symbol")
+        
+        # Get the stock quote ex. {"price": 123.45, "symbol": "AAPL"}
+        price = lookup(symbol)["price"]
+        
+        # Get the number of shares the user wants to buy
+        shares = request.form.get("shares")
+        
+        # Check if the user entered a valid number of shares
+        if len(shares) <= 0:
+            return apology("Invalid number of shares")
+        
+        """ Buy the desired stock """
+        user_cash = db.execute("SELECT cash FROM users WHERE id = ?", session["user_id"])
+        
+        total_cost = float(price) * float(shares)
+        
+        if user_cash[0]["cash"] < total_cost:
+            return apology("Insufficient funds")
+        
+        # Look up current date and time
+        date_time = datetime.now().strftime("%d-%m-%Y %H:%M:%S")
+        
+        db.execute("UPDATE users SET cash = cash - ? WHERE id = ?", total_cost, session["user_id"])
+        db.execute("INSERT INTO transactions (user_id, symbol, shares, price, date) VALUES (?, ?, ?, ?, ?)", session["user_id"], symbol, shares, price, date_time)
+        
+        return render_template("bought.html", name=get_stock_name(symbol), symbol=symbol, shares=shares, price=price)
+    else:
+        # Get the value of the 'symbol' parameter from the URL, if there is a symbol in the URL
+        symbol = request.args.get('symbol', '')
+        
+        return render_template("buy.html", symbol=symbol)
 
 
 @app.route("/history")
@@ -106,23 +142,58 @@ def logout():
 @login_required
 def quote():
     """Get stock quote."""
-    return apology("TODO")
+    if request.method == "POST":
+        """ symbol is the stock symbol of the stock being quoted. ex: AAPL"""
+        symbol = request.form.get("symbol")
+        
+        is_valid_stock(symbol)
+        
+        """ symbol_lookup is the dictionary returned by the lookup function"""
+        """ example: {"price": 123.45, "symbol": "AAPL"}"""
+        symbol_lookup = lookup(symbol)
+        
+        # Turn the stock price from an int to a dollar format (ex: 123.45 to $123.45)
+        price = usd(symbol_lookup["price"])
+        
+        name = get_stock_name(symbol)
+        
+        return render_template("quoted.html", name=name, symbol=symbol, price=price)
+    else:
+        return render_template("quote.html")
+    
+    
 
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    
+    """Register user"""
+    
     if request.method == "POST":
-        # Ensure username was submitted
+        # Ensure username and password are valid
         username = request.form.get("username")
+        password = request.form.get("password")
+        password_confirmation = request.form.get("confirmation")
         if not username:
             return apology("Hold on, I think you forgot to mention your username", 403)
-        
-        # Ensure password was submitted
-        password = request.form.get("password")
         if not password:
             return apology("What about your password?", 403)
+        
+        if password != password_confirmation:
+            return apology("Your passwords don't match", 403)
+        
+        # If all the user information is valid, add the user to the database
+        db.execute("INSERT INTO users (username, hash) VALUES(?, ?)", username, generate_password_hash(password))
+        
+        # Redirect to login page after successful registration
+        return redirect("/login")
 
-    return apology("TODO")
+    elif request.method == "GET":
+        return render_template("register.html")
+    
+    # Handle other request methods more explicitly
+    else:
+        return apology("Invalid request method", 405)
 
 
 @app.route("/sell", methods=["GET", "POST"])
