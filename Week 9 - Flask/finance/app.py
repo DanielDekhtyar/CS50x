@@ -215,8 +215,6 @@ def history():
             }
         )
 
-    total_stock_value = 0
-
     user_cash = db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"]
     user_cash = round(user_cash, 2)
 
@@ -310,16 +308,24 @@ def register():
 
     if request.method == "POST":
         # Ensure username and password are valid
-        username = request.form.get("username")
-        password = request.form.get("password")
-        password_confirmation = request.form.get("confirmation")
+        username = request.form["username"]
+        password = request.form["password"]
+        password_confirmation = request.form["confirmation"]
         if not username:
-            return apology("Hold on, I think you forgot to mention your username", 403)
+            return apology("Hold on, I think you forgot to mention your username", 400)
         if not password:
-            return apology("What about your password?", 403)
+            return apology("What about your password?", 400)
 
         if password != password_confirmation:
-            return apology("Your passwords don't match", 403)
+            return apology("Your passwords don't match", 400)
+
+        # Check that the username doesn't already exist
+        identical_usernames = db.execute(
+            "SELECT COUNT(*) FROM users WHERE username = ? ;", username
+        )
+
+        if identical_usernames[0]["COUNT(*)"] > 0:
+            return apology("That username is already taken", 400)
 
         # If all the user information is valid, add the user to the database
         db.execute(

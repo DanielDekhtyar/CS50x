@@ -22,11 +22,11 @@ nav .navbar-brand .green
     color: #2e944b;
 }
 
-.action-button {
+.buy-sell-button {
     transition: background-color .35s, border-color .35s;
 }
 
-.action-button:hover {
+.buy-sell-button:hover {
     background-color: #60c432;
     border-color: #60c432;
 }
@@ -37,3 +37,5 @@ nav .navbar-brand .green
     -webkit-appearance: none;
     margin: 0; /* Optional - if you want to remove the default margin */
 }
+
+.action-button
