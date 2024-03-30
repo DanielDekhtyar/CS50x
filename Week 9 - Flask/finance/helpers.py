@@ -91,15 +91,17 @@ def usd(value):
 
 
 """ Get the name of the company from the stock symbol. ex. AAPL returns Apple Inc."""
+
+
 def get_stock_name(ticker):
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
-        name = info.get('longName', None)
+        name = info.get("longName", None)
         if not name:
-            name = info.get('shortName', None)
+            name = info.get("shortName", None)
         if not name:
-            name = info.get('symbol', f"No name found for {ticker}")
+            name = info.get("symbol", f"No name found for {ticker}")
         return name
     except Exception as e:
         print("Error occurred:", e)
@@ -109,13 +111,14 @@ def get_stock_name(ticker):
 def is_valid_stock(symbol):
     if symbol is None:
         return False
-    
+
     # Check that the symbol is valid. All letters and length between 1 and 5
     if not 1 <= len(symbol) <= 5 and not symbol.isalpha():
         return False
-    
+
     # If the stock is invalid return an error message
     if not lookup(symbol):
         return False
-    
-    else: return True
+
+    else:
+        return True

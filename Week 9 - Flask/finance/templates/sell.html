@@ -5,5 +5,18 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Sell</h1>
+    <form action="/sell" method="post">
+        <div class="mb-3">
+            <select class="form-select mx-auto w-auto" name="symbol">
+                <option disabled selected>Symbol</option>
+                {% for stock in stocks %}
+                    <option value="{{ stock['symbol'] }}">{{ stock['name'] }} ({{ stock['symbol'] }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <input autocomplete="off" class="form-control mx-auto w-auto no-spinner" min="0.001" step="0.001" name="shares" placeholder="Shares" type="number">
+        </div>
+        <button class="btn btn-primary action-button" type="submit">Sell</button>
+    </form>
 {% endblock %}
