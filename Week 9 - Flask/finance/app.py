@@ -36,7 +36,50 @@ def after_request(response):
 @login_required
 def index():
     """Show portfolio of stocks"""
-    return render_template("index.html")
+    
+    user_id = session["user_id"]
+    username = db.execute("SELECT username FROM users WHERE id = ?", user_id)[0]["username"]
+    
+    transactions_db = db.execute("SELECT * FROM transactions WHERE user_id = ?", user_id)
+    
+    
+    
+    transactions = []
+    for trans in transactions_db:
+        # Get the current price of each stock
+        price = lookup(trans["symbol"])["price"]
+        # Round the price to 2 decimal places
+        price = round(price, 2)
+        
+        # Get the total value of each stock symbol
+        value = trans["shares"] * lookup(trans["symbol"])["price"]
+        # Round the value to 2 decimal places
+        value = round(value, 2)
+        
+        transactions.append({
+            "symbol": trans["symbol"],
+            "shares": trans["shares"],
+            "price": price,
+            "value": value,
+        })
+    
+    total_stock_value = 0
+    
+    for stock in transactions:
+        total_stock_value += stock["value"]
+    
+    # Round to the nearest 2 decimal places
+    total_stock_value = round(total_stock_value, 2)
+    
+    user_cash = db.execute("SELECT cash FROM users WHERE id = ?", user_id)[0]["cash"]
+    user_cash = round(user_cash, 2)
+    print(f"Cash in account: ${user_cash}")
+    print(f"Total stock value: ${total_stock_value}")
+    print(f"Total: ${user_cash + total_stock_value}")
+    
+    total = user_cash + total_stock_value
+    
+    return render_template("index.html", username=username, transactions=transactions, total_stock_value=float(total_stock_value), cash=float(user_cash), total=float(total))
 
 
 @app.route("/buy", methods=["GET", "POST"])
@@ -53,10 +96,10 @@ def buy():
         price = lookup(symbol)["price"]
         
         # Get the number of shares the user wants to buy
-        shares = request.form.get("shares")
+        shares = request.form['shares']
         
         # Check if the user entered a valid number of shares
-        if len(shares) <= 0:
+        if len(shares) <= 0 or float(shares) <= 0:
             return apology("Invalid number of shares")
         
         """ Buy the desired stock """
@@ -144,9 +187,11 @@ def quote():
     """Get stock quote."""
     if request.method == "POST":
         """ symbol is the stock symbol of the stock being quoted. ex: AAPL"""
-        symbol = request.form.get("symbol")
+        symbol = request.form["symbol"]
+        symbol = symbol.upper()
         
-        is_valid_stock(symbol)
+        if not is_valid_stock(symbol):
+            return apology("Invalid symbol")
         
         """ symbol_lookup is the dictionary returned by the lookup function"""
         """ example: {"price": 123.45, "symbol": "AAPL"}"""
@@ -200,4 +245,4 @@ def register():
 @login_required
 def sell():
     """Sell shares of stock"""
-    return apology("TODO")
+    return render_template("sell.html")

@@ -5,5 +5,52 @@
 {% endblock %}
 
 {% block main %}
-    <h1>Welcome to C$50 Finance!</h1>
+    <h1 style="margin-bottom: 2vh;">Welcome to C$50 Finance, {{ username }}!</h1>
+    <table class="table table-striped">
+        <thead>
+            {% if total_stock_value != 0 %}
+                <tr>
+                    <th class="text-start">Symbol</th>
+                    <th class="text-end">Shares</th>
+                    <th class="text-end">Price</th>
+                    <th class="text-end">Value</th>
+                </tr>
+            {% endif %}
+        </thead>
+
+        <tbody>
+            {% if total_stock_value == 0 %}
+                <h4>You have not purchased any stocks yet!</h4>
+                <h6>Click <a action="/buy" method="get" href="/buy">here</a> to buy a stocks</h6>
+                <h6>Click <a action="/quote" method="get" href="/quote">here</a> to look up stocks</h6>
+                <h6>You have ${{ cash }} in your account</h6>
+            {% endif %}
+            {% for row in transactions %}
+                <tr>
+                    <td class="text-start">{{ row["symbol"] }}</td>
+                    <td class="text-end">{{ row["shares"] }}</td>
+                    <td class="text-end">${{ row["price"] }}</td>
+                    <td class="text-end">${{ row["value"] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody> 
+        
+        <tfoot>
+            {% if total_stock_value != 0 %}
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="3">Stocks Value</td>
+                    <td class="border-0 text-end">${{ total_stock_value }}</td>
+                </tr>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="3">Cash</td>
+                    <td class="border-0 text-end">${{ cash }}</td>
+                </tr>
+                <tr>
+                    <td class="border-0 fw-bold text-end" colspan="3">TOTAL</td>
+                    <td class="border-0 w-bold text-end">${{ total }}</td>
+                </tr>
+            {% endif %}
+            
+        </tfoot>
+    </table>
 {% endblock %}
