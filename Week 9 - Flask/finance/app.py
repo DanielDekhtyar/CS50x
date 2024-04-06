@@ -75,6 +75,7 @@ def index():
     user_cash = round(user_cash, 2)
 
     total = user_cash + total_stock_value
+    total = round(total, 2)
 
     return render_template(
         "index.html",
