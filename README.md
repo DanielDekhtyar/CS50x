@@ -10,4 +10,6 @@
 
 ### The full YouTube playlist of the lectures can be found [here](https://www.youtube.com/watch?v=3LPJfIKxwWc&list=PLhQjrBD2T381WAHyx1pq-sBfykqMBI7V4&pp=iAQB).
 
+### The repository for my final project can be found [here](https://github.com/DanielDekhtyar/github-search).
+
 #### *The certificate of completion from Harvard is in the GitHub repository and on LinkedIn*
