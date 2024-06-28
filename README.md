@@ -12,6 +12,11 @@
 
 ### The full YouTube playlist of the lectures can be found [here](https://www.youtube.com/watch?v=3LPJfIKxwWc&list=PLhQjrBD2T381WAHyx1pq-sBfykqMBI7V4&pp=iAQB).
 
-### The repository for my final project can be found [here](https://github.com/DanielDekhtyar/github-search).
+### The repository for my final project can be found [here](https://github.com/DanielDekhtyar/CodeFinder).
 
-#### *The certificate of completion from Harvard is in the GitHub repository and on LinkedIn*
+<br></br>
+
+## _Certificate of completion from Harvard_
+The original certificate can be found [here](https://cs50.harvard.edu/certificates/24a6e49b-9e2a-4a9e-b167-20970f40032e)  
+
+![CS50x](https://github.com/DanielDekhtyar/CS50x/assets/44679647/7f97dfd6-8898-49dc-8dfa-1851619219e6)
